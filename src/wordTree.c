@@ -37,7 +37,7 @@ int addWord(tree *wordTree, char *word)
 {
 	int i=0;
 	node *temp = wordTree->root;
-	while(word[i]!='\0' && word[i]!='\n')
+	while(word[i]!='\0' && word[i]!='\n' && word[i]!='\r')
 	{
 		int letterValue = (int)word[i]-97;
 		if(temp->nextLetter[letterValue]==NULL)
@@ -139,7 +139,7 @@ int findSuggestions(tree *wordTree, char *prefix, wordSuggest *suggestion)
 	}
 	clearSuggest(suggestion);
 	searchWords(suggestion, temp, "");
-	printHalfSuggest(suggestion, prefix);
+	printSuggest(suggestion, prefix);
 	return 1;
 }
 
@@ -205,30 +205,18 @@ int findAlternates(tree *wordTree, char *word, wordSuggest *suggestion)
 	return 1;
 }
 
-/*int main()
+int main()
 {
 	tree *wordTree = createTree();
 	readTree(wordTree);
 	wordSuggest *suggestions = createWordSuggest();
 	char word[30];
-	int ch;
-	printf("Success %d\n", numberOfNodes);
-	printf("Completion Suggestions: ");
-	scanf("%d", &ch);
-	while(ch!=0)
+	printf("Successfully created tree %d\n", numberOfNodes);
+	while(1==1)
 	{
 		scanf("%s", word);
-		if(!findSuggestions(wordTree, word, suggestions))
-			printf("No Suggestions Found\n");
-		ch--;
+		findSuggestions(wordTree, word, suggestions);
+		findAlternates(wordTree, word, suggestions);
+		printf("\n");
 	}
-	printf("Correction Suggestions: ");
-	scanf("%d", &ch);
-	while(ch!=0)
-	{
-		scanf("%s", word);
-		if(!findAlternates(wordTree, word, suggestions))
-			printf("Given Word Exists.\n");
-		ch--;
-	}
-}*/
+}

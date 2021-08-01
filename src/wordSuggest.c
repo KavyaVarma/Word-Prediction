@@ -63,19 +63,19 @@ int addSuggest(wordSuggest *suggestion, char *word, int freq)
 void printSuggest(wordSuggest *suggestions, char *prefix)
 {
 	int i=noOfRanks-1;
-	printf("\n");
+	//printf("\n");
 	for(; i>=0; i--)
 	{
 		wordNode *temp = suggestions->wordList[i].head;
 		if(temp==NULL)
 			continue;
-		printf("%d\n", i);
+		//printf("%d\n", i);
 		while(temp!=NULL)
 		{
 			printf("%s%s ", prefix, temp->word);
 			temp = temp->next;
 		}
-		printf("\n");
+		//printf("\n");
 	}
 }
 
