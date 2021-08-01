@@ -211,12 +211,13 @@ int main()
 	readTree(wordTree);
 	wordSuggest *suggestions = createWordSuggest();
 	char word[30];
-	printf("Successfully created tree %d\n", numberOfNodes);
+	printf("Successfully created tree!\n");
 	while(1==1)
 	{
+		printf(">> ");
 		scanf("%s", word);
-		findSuggestions(wordTree, word, suggestions);
 		findAlternates(wordTree, word, suggestions);
+		findSuggestions(wordTree, word, suggestions);
 		printf("\n");
 	}
 }
