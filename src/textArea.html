@@ -1,0 +1,27 @@
+<html>
+	<textarea rows="10" cols="90"></textarea>
+	<p></p>
+	<script>
+		exp = ""
+		obj = {}
+		obj.addToExp = function()
+		{
+			exp = document.querySelector("textarea").value;
+			document.querySelector("p").innerHTML  = exp;
+			localStorage.setItem("text",exp);
+		}
+		window.addEventListener("keyup", obj.addToExp)
+	</script>
+	<?php
+		$exp = localStorage.getItem("text");
+		while(1)
+		{
+			if($exp!=localStorage.getItem("text"))
+			{
+				$exp = localStorage.getItem("text");
+				$arr = exec("wordTree ".explode(" ", $exp)[-1]);
+			}
+			echo "a"
+		}
+		?>
+</html>
